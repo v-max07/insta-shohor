@@ -19,8 +19,6 @@ const addToLiked = (id) => {
   // console.log(id);
     likedPostsId.push(id); 
     showPosts(posts);
-    getLikedPosts();
-    // isLiked(id);
 };
 
 const reportPost = (id) => {
@@ -50,7 +48,7 @@ const switchTab = (id) => {
         document.getElementById( "posts" ).style.display = "none";
         document.getElementById( "liked" ).style.display = "none";
 
-        
+        document.getElementById("reported").textContent = '';
         displayReportedPosts();
     }
 };
