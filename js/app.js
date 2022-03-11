@@ -16,8 +16,11 @@ const isLiked = (id) => {
 };
 
 const addToLiked = (id) => {
-    likedPostsId.plus(id); 
+  // console.log(id);
+    likedPostsId.push(id); 
     showPosts(posts);
+    getLikedPosts();
+    // isLiked(id);
 };
 
 const reportPost = (id) => {
@@ -51,6 +54,7 @@ const switchTab = (id) => {
 };
 
 const createPost = (post) => {
+  console.log(post);
     const image = post.image;
     const div = document.createElement( "article" );
     div.classList.add( "post" );
@@ -62,7 +66,7 @@ const createPost = (post) => {
                     target="_blank"
                     class="post__avatar"
                   >
-                    <img src="${image}" alt="User Picture" />
+                    <img src="${post.userImage}" alt="User Picture" />
                   </a>
                   <a href="#" class="post__user">phero</a>
                 </div>
@@ -133,6 +137,7 @@ const createPost = (post) => {
 };
 
 const showPosts = (posts) => {
+  // console.log(posts);
     const productsContainer = document.getElementById( "posts" );
     productsContainer.innerHTML = "";
 
@@ -143,7 +148,8 @@ const showPosts = (posts) => {
 };
 
 const displayLikedPosts = () => {
-    const likedPosts = getLikedPosts();
+  const likedPosts = getLikedPosts();
+  // console.log(likedPosts);
     likedPosts.forEach((post) => {
         const div = createPost(post);
         document.getElementById( "liked" ).appendChild(div);
@@ -162,6 +168,7 @@ const loadPosts = async () =>{
   let data = await fetch('../data/posts.json');
   posts = await data.json();
   showPosts(posts);
+  // console.log(posts);
 }
 
 loadPosts();
