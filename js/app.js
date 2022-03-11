@@ -18,7 +18,9 @@ const isLiked = (id) => {
 const addToLiked = (id) => {
   // console.log(id);
     likedPostsId.push(id); 
-    showPosts(posts);
+    // showPosts(posts);
+    const remainingPosts = posts.filter((post) => !reportedPostsId.includes(post.id));
+    showPosts(remainingPosts);
 };
 
 const reportPost = (id) => {
@@ -54,7 +56,7 @@ const switchTab = (id) => {
 };
 
 const createPost = (post) => {
-  console.log(post);
+  // console.log(post);
   const image = post.image;
   const userImage = post.userImage;
     const div = document.createElement( "article" );
